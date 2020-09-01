@@ -1,9 +1,9 @@
 import { config } from 'dotenv';
 import * as TelegramBot from 'node-telegram-bot-api';
 
-config();
-
 const init = () => {
+    config();
+
     const token = process.env.API_KEY;
 
     const bot = new TelegramBot(token, { polling: true });
@@ -12,7 +12,7 @@ const init = () => {
         const chatId = msg.chat.id;
         const resp = match[0];
 
-        console.log(`Sending response message: ${resp}`);
+        console.log(`${new Date().toISOString()} - Sending response message: ${resp}`);
 
         bot.sendMessage(chatId, resp);
     });
