@@ -1,0 +1,25 @@
+{
+    "name": "dadbot",
+    "version": "1.0.0",
+    "description": "Telegram bot",
+    "main": "lib/index.js",
+    "scripts": {
+        "lint": "tslint --project tsconfig.json",
+        "build": "tsc",
+        "deploy": "NODE_ENV=production pm2 start lib/index.js --name='dadbot' --log-date-format 'DD-MM HH:mm:ss.SSS'",
+        "start": "NODE_ENV=production node lib/index.js",
+        "dev": "npm run build && NODE_ENV=development node lib/index.js"
+    },
+    "keywords": [
+        "telegram"
+    ],
+    "author": "Peter Abbondanzo",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "node-telegram-bot-api": "^0.50.0"
+    },
+    "devDependencies": {
+        "@types/node-telegram-bot-api": "^0.50.2"
+    }
+}
