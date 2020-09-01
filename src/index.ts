@@ -12,6 +12,8 @@ const init = () => {
         const chatId = msg.chat.id;
         const resp = match[0];
 
+        console.log(`Sending response message: ${resp}`);
+
         bot.sendMessage(chatId, resp);
     });
 };
