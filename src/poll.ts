@@ -1,6 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
 import { reee } from "./poll/reee";
-import { env } from "./setup/env";
 import { log } from "./utils/log";
 
 type PollHandler = (bot: TelegramBot, config: Config) => void;
@@ -17,9 +16,9 @@ const getPoller = (name: string) => {
   return handler;
 };
 
-export const handlePoll = (names: string[]) => {
+export const handlePoll = (names: string[], config: Config) => {
   const handlers = names.map(getPoller);
-  const bot = new TelegramBot(env.apiKey, { polling: true });
+  const bot = new TelegramBot(config.apiKey, { polling: true });
   log("Polling for", names.join(""));
-  handlers.forEach((handler) => handler(bot, env));
+  handlers.forEach((handler) => handler(bot, config));
 };
