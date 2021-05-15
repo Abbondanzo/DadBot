@@ -19,7 +19,7 @@ const parseEnv = (): Config => {
     try {
       const parsedIds = JSON.parse(chatIds);
       if (Array.isArray(parsedIds)) {
-        initialConfig.chatIds = parsedIds;
+        initialConfig.chatIds = parsedIds.map(String);
       } else {
         throw new Error("Invalid schema for CHAT_IDS");
       }
