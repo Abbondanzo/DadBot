@@ -4,6 +4,11 @@ import { log } from "./../utils/log";
 export const reee = (bot: TelegramBot, config: Config) => {
   bot.onText(/[R,r]([E,e]){3,}/, (msg, match) => {
     const chatId = msg.chat.id;
+
+    if (config.chatIds && !config.chatIds.includes(String(chatId))) {
+      return;
+    }
+
     const resp = match[0];
 
     log(
