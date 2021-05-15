@@ -1,4 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
+import { goToBed } from "./poll/goToBed";
 import { reee } from "./poll/reee";
 import { log } from "./utils/log";
 
@@ -6,6 +7,7 @@ type PollHandler = (bot: TelegramBot, config: Config) => void;
 
 const pollHandlers: { [key: string]: PollHandler } = {
   reee,
+  "go-to-bed": goToBed,
 };
 
 const getPoller = (name: string) => {
