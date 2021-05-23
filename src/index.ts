@@ -25,5 +25,6 @@ switch (command) {
     handlePoll(pollHandlerNames, config);
     break;
   default:
-    throw new Error(`Unhandled command ${command}`);
+    console.log(`Unhandled command ${command}`);
+    process.exit(1);
 }
