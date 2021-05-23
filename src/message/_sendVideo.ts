@@ -1,8 +1,12 @@
 import TelegramBot from "node-telegram-bot-api";
 import { log } from "./../utils/log";
 
-export const sendVideo = (videoUrl: string, config: Config) => {
+export const sendVideo = async (videoUrl: string, config: Config) => {
   const bot = new TelegramBot(config.apiKey, { polling: false });
+
+  if (bot.isPolling()) {
+    await bot.stopPolling();
+  }
 
   if (!config.chatIds) {
     throw new Error("No chat IDs set");
